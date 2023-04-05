@@ -9,13 +9,14 @@ pool:
   vmImage: ubuntu-latest
 
 steps:
-- task: TerraformTaskV4@4
+- task: TerraformCLI@0
   displayName: Terraform init
   inputs:
-    provider: 'azurerm'
     command: 'init'
-- task: TerraformTaskV4@4
-  displayName: Terraform Plan 
+    allowTelemetryCollection: true
+
+- task: TerraformCLI@0
+  displayName: Terraform Plan
   inputs:
-    provider: 'azurerm'
     command: 'plan'
+    allowTelemetryCollection: false
